@@ -1,0 +1,9 @@
+---
+- name: First play
+  hosts: all
+  tasks:
+    - name: Install htop.
+      apt:
+        name: htop
+        state: present
+
