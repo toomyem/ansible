@@ -2,8 +2,10 @@
 - name: First play
   hosts: all
   tasks:
-    - name: Install htop.
+    - name: Install base packages.
       apt:
-        name: htop
+        name:
+          - htop
+          - vim
         state: present
 

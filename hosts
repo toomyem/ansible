@@ -1,2 +1,0 @@
-[hosts]
-devuan ansible_connection=local
