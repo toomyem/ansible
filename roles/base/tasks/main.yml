@@ -1,10 +1,10 @@
 ---
 - name: Install cron job.
-    cron:
-      special_time: hourly
-      name: pull
-      job: ansible-pull -U https://github.com/toomyem/ansible -i $(hostname -s), -o -s 45 2>&1 >/var/log/pull.log
-      state: present
+  cron:
+    special_time: hourly
+    name: pull
+    job: ansible-pull -U https://github.com/toomyem/ansible -i $(hostname -s), -o -s 45 2>&1 >/var/log/pull.log
+    state: present
 
 - name: Install basic packages
   apt:
