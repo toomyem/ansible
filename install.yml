@@ -1,11 +1,11 @@
 ---
-- name: First play
+- name: Setup ansible-pull operations.
   hosts: all
   tasks:
-    - name: Install base packages.
-      apt:
-        name:
-          - htop
-          - vim
+    - name: Install cron job.
+      cron:
+        special_time: hourly
+        name: pull
+        job: ansible-pull -U https://github.com/toomyem/ansible -i $(hostname -s), -o
         state: present
 
