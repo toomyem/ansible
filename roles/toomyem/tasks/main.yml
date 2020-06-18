@@ -4,4 +4,14 @@
     name: toomyem
     uid: 1000
     shell: /bin/bash
-    
+
+- name: Setup basic aliases.
+  lineinfile:
+    path: /home/toomyem/.bash_aliases
+    create: yes
+    owner: toomyem
+    group: toomyem
+    line: "alias ll='ls -lh'"
+    regexp: ^alias ll=
+    state: present
+
