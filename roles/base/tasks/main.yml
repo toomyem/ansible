@@ -1,0 +1,10 @@
+---
+- name: Install basic packages
+  apt:
+    name:
+      - htop
+      - vim
+      - gnupg2
+      - curl
+    state: present
+

@@ -1,0 +1,54 @@
+---
+- name: Install motion related packages.
+  apt:
+    name:
+      - motion
+      - ffmpeg
+      - v4l-utils
+    state: present
+
+- name: Install python and dependencies.
+  apt:
+    name:
+      - python-pip
+      - python-dev
+      - python-setuptools
+      - curl
+      - libssl-dev
+      - libcurl4-openssl-dev
+      - libjpeg-dev
+      - libz-dev
+    state: present
+
+- name: Install motioneye python package.
+  pip:
+    name: motioneye
+    state: present
+
+- name: Prepare motioneye conf dir.
+  file:
+    path: /etc/motioneye
+    state: directory
+
+- name: Copy motion.conf file.
+  copy:
+    src: /usr/local/share/motioneye/extra/motioneye.conf.sample
+    dest: /etc/motioneye/motioneye.conf
+
+- name: Prepare motioneye var dir.
+  file:
+    path: /var/lib/motioneye
+    state: directory
+
+- name: Setup motioneye service.
+  copy:
+    src: /usr/local/share/motioneye/extra/motioneye.systemd-unit-local
+    dest: /etc/systemd/system/motioneye.service
+
+- name: Ensure motioneye service is enabled and started.
+  systemd:
+    name: motioneye
+    daemon_reload: true
+    enabled: true
+    state: started
+
