@@ -1,0 +1,11 @@
+---
+- name: Basic configuration.
+  hosts: all
+  roles:
+    - base
+
+- name: Setup motioneye server.
+  hosts: motioneye
+  roles:
+    - motioneye
+

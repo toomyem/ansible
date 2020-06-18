@@ -1,7 +1,0 @@
----
-- name: Main play for motioneye server.
-  hosts: motioneye
-  roles:
-    - base
-    - motioneye
-
