@@ -34,6 +34,7 @@
   copy:
     src: /usr/local/share/motioneye/extra/motioneye.conf.sample
     dest: /etc/motioneye/motioneye.conf
+    force: false
 
 - name: Prepare motioneye var dir.
   file:
