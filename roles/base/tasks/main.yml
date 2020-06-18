@@ -15,3 +15,10 @@
       - curl
     state: present
 
+- name: Setup aliases
+  lineinfile:
+    path: /root/.bashrc
+    line: alias ll='ls -lh'
+    regexp: ^alias ll=
+    state: present
+

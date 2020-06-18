@@ -11,7 +11,7 @@
     create: yes
     owner: toomyem
     group: toomyem
-    line: "alias ll='ls -lh'"
+    line: alias ll='ls -lh'
     regexp: ^alias ll=
     state: present
 
