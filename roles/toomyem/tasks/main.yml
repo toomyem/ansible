@@ -15,3 +15,21 @@
     regexp: ^alias ll=
     state: present
 
+- name: Create .ssh directory
+  file:
+    path: /home/toomyem/.ssh
+    state: directory
+    owner: toomyem
+    group: toomyem
+    mode: 0700
+
+- name: Setup public ssh key.
+  lineinfile:
+    path: /home/toomyem/.ssh/authorized_keys
+    create: yes
+    mode: 0600
+    owner: toomyem
+    group: toomyem
+    line: ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAyyTczwLrSf/eqfTzjbcaU4seM80zzMpRneOcPkONf+oM79vjgZET2ma8FFf2IxwFu0LQc097rUKXzEPhQ/I4adsYMEeHmOjKTmDzjkudCqQPBaF79yAES2AxHu5FKR2W4GrofJ0ftdC4pZBD0EjgXdhZa+WvexrIwanbYl2hra7XrL38paKNQ1/z5J7fpE6pRqaeasBaU11DUZwPQxYxIi4kOmt2sdoGciLBCRXmT+cHeM76w3zWLWDUB6yS+Gp1szGW0ttdrlm1lk/8uNO4KQlkMCktWINND+kywqYvjNtLTPXXfAHIOjju4dQLD3zEgiGEy6c6p/PK6Q4LM5aJ9Q== mykey
+    regexp: mykey$
+    state: present
