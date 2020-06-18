@@ -22,3 +22,9 @@
     regexp: ^alias ll=
     state: present
 
+- name: Set local timezone
+  file:
+    path: /etc/localtime
+    src: /usr/share/zoneinfo/Europe/Warsaw
+    state: link
+
