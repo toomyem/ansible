@@ -1,0 +1,6 @@
+---
+- hosts: t620
+  roles:
+    - base
+    - toomyem
+
