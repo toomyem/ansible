@@ -1,0 +1,6 @@
+---
+- hosts: motioneye
+  roles:
+    - base
+    - motioneye
+    

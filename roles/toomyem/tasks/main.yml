@@ -1,0 +1,7 @@
+---
+- name: Create toomyem user.
+  user:
+    name: toomyem
+    uid: 1000
+    shell: /bin/bash
+    
