@@ -11,6 +11,7 @@
       - php7.3-gd
       - php7.3-mbstring
       - php7.3-curl
+      - php7.3-xml
     state: present
     update_cache: true
   notify: restart apache
