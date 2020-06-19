@@ -60,3 +60,9 @@
     enabled: true
     state: started
 
+- name: Install update task in crontab.
+  cron:
+    name: selfoss
+    special_time: hourly
+    job: sudo -u www-data php /var/www/html/cliupdate.php
+
