@@ -13,6 +13,7 @@
       - vim
       - gnupg2
       - curl
+      - sudo
     state: present
 
 - name: Setup aliases
