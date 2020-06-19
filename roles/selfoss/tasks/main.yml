@@ -1,0 +1,61 @@
+---
+- name: Install packages.
+  apt:
+    name:
+      - unzip
+      - apache2
+      - libapache2-mod-php7.3
+      - php7.3
+      - php7.3-json
+      - php7.3-sqlite3
+      - php7.3-gd
+      - php7.3-mbstring
+      - php7.3-curl
+    state: present
+    update_cache: true
+  notify: restart apache
+
+- name: Enable mod_rewrite.
+  apache2_module:
+    name: rewrite
+    state: present
+  notify: restart apache
+
+- name: Remove index.html file.
+  file:
+    path: /var/www/html/index.html
+    state: absent
+
+- name: Unpack selfoss archive.
+  unarchive:
+    src: https://github.com/SSilence/selfoss/releases/download/2.18/selfoss-2.18.zip
+    dest: /var/www/html
+    creates: /var/www/html/index.php
+    remote_src: true
+    owner: www-data
+    group: www-data
+
+- name: Create selfoss site configuration.
+  copy:
+    src: selfoss.conf
+    dest: /etc/apache2/sites-available/
+
+- name: Disable default apache site.
+  file:
+    path: /etc/apache2/sites-enabled/000-default.conf
+    state: absent
+  notify: restart apache
+
+- name: Enable selfoss site.
+  file:
+    path: /etc/apache2/sites-enabled/selfoss.conf
+    state: link
+    src: /etc/apache2/sites-available/selfoss.conf
+  notify: restart apache
+
+- name: Ensure apache2 is enabled and running.
+  service:
+    name: apache2
+    enabled: true
+    state: started
+

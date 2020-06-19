@@ -1,0 +1,6 @@
+---
+- hosts: selfoss
+  roles:
+    - base
+    - selfoss
+
